@@ -4,6 +4,12 @@ import sys
 from approvaltests import verify
 from texttest_fixture import main
 
+from approvaltests.reporters import GenericDiffReporterFactory, set_default_reporter
+
+factory = GenericDiffReporterFactory()
+reporter = factory.get("BeyondCompare")
+set_default_reporter(reporter)
+
 def test_gilded_rose_approvals():
     orig_sysout = sys.stdout
     try:
